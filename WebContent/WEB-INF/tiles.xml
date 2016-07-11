@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+<!-- Added by Sirisha & Sowmya -->
+	<definition name="carttile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ShoppingCart.jsp" />
+	   	<!--  <put-attribute name="footer" value="/footer.jsp" />-->
+	</definition>
+	<definition name="trackordertile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/trackmyorder.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updateqtyerrortile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ErrorUpdateQty.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" /> <!-- <action name="itemdetails" class="ebay.iiitb.trackOrder.OrderItemsAction" method ="execute">
+     	<result name="success" type="tiles">orderitemstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+       -->
+	</definition>
+	<definition name="In_transaction_orderstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Transactions.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="shipped_orderstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ShippedItems.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="received_orderstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ReceivedTransactions.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="received_orderitemstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/RateSeller.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="noitems_tiles" extends="baseLayout" >
+	   	<put-attribute name="body" value="/NoItems.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="shippedorderitemstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ShippedOrderSpecificItems.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="sellerstatustile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/SellerStatusUpdate.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="userstatustile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/UserStatusUpdate.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="getpaidorderstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/getPaidOrders.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="getshippedorderstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/getShippedOrders.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<!-- Done -->
+	<definition name="baseLayout" template="/baseLayout.jsp">
+		<put-attribute name="header" value="/headerr" />
+		<put-attribute name="body" value="/dummy.jsp" />
+		<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="home" extends="baseLayout">
+		<put-attribute name="body" value="/Registration_login.jsp" />
+	</definition>
+	 <definition name="starttile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/home_body.jsp" />
+	</definition>
+	 <definition name="registersuccess" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Registersuccess.jsp" />
+	</definition>
+	<definition name="registerfailure" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Registerfailure.jsp" />
+	</definition>
+	<definition name="dealstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/displaytopcategories.jsp" />
+	</definition>
+	<definition name="logouttile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/logout.jsp" />
+	</definition>
+	<definition name="itemstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/subcategoryclick.jsp" />
+	</definition>
+	<definition name="itemdetailsstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ItemDetails.jsp" />
+	</definition>
+	<definition name="sellerdetailstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/SellerDetails.jsp" />
+	</definition>
+	<definition name="itemmanagementtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/itemmanagement.jsp" />
+	</definition>
+	<definition name="errortile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/error.jsp" />
+	</definition>
+		<definition name="dealerrortile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/errordeal.jsp" />
+	</definition>
+	
+	<definition name="errordeletetile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/errordelete.jsp" />
+	</definition>
+	<definition name="deletetile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/delete.jsp" />
+	</definition>
+	<definition name="noitemtiles" extends="baseLayout" >
+	   	<put-attribute name="body" value="/noitemtiles.jsp" />
+	</definition>
+	<definition name="reviewordertile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/revieworder.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="Paymenttile" extends="baseLayout" >
+			<put-attribute name="header" value="/bankheader.jsp" />
+		   	<put-attribute name="body" value="/PaymentPage.jsp" />
+		   	<put-attribute name="footer" value="/bankfooter.jsp" />
+	</definition>
+	<definition name="PaymentDonetile" extends="baseLayout" >
+			<put-attribute name="header" value="/bankheader.jsp" />
+		   	<put-attribute name="body" value="/Payment.jsp" />
+		   	<put-attribute name="footer" value="/bankfooter.jsp" />
+	</definition>
+	<definition name="changeaddresstile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/ChangeAddress.jsp" />
+		   	
+	</definition>
+	<definition name="PaymentDone2tile" extends="baseLayout" >
+			<put-attribute name="header" value="/bankheader.jsp" />
+		   	<put-attribute name="body" value="/PaymentDone.jsp" />
+		   	<put-attribute name="footer" value="/bankfooter.jsp" />
+	</definition>
+	<definition name="Errortile" extends="baseLayout" >
+			<put-attribute name="header" value="/bankheader.jsp" />
+		   	<put-attribute name="body" value="/Error.jsp" />
+		    <put-attribute name="footer" value="/bankfooter.jsp" />
+	</definition>
+	
+	<definition name="Nobaltile" extends="baseLayout" >
+			<put-attribute name="header" value="/bankheader.jsp" />
+		   	<put-attribute name="body" value="/Nobal.jsp" />
+		   	<put-attribute name="footer" value="/bankfooter.jsp" />
+	</definition>
+	<!-- Admin tiles -->
+	<definition name="UpdateErrortile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Error.jsp" />
+	</definition>
+	<definition name="vattile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updatevat.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updatevaterrortile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/errorupdatevat.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updatevatsuccesstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/successupdatevat.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="AdminHometile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/AdminHome.jsp" />
+	</definition>
+	<definition name="Itemstatusupdatetile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Itemstatusupdate.jsp" />
+	</definition>
+	<definition name="Addcategorytile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Addcategory.jsp" />
+	</definition>
+	<definition name="Addnewcategorytile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Addnewcategory.jsp" />
+	</definition>
+	<definition name="Addnewsubcategorytile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Addnewsubcategory.jsp" />
+	</definition>
+	
+		<definition name="successtile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Addnewsubcategorysuccess.jsp" />
+	</definition>
+		<definition name="Errortile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/Addnewsubcategoryerror.jsp" />
+	</definition>
+	<definition name="advtcosttile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/AdvtCost.jsp" />
+	</definition>
+	
+	<definition name="addattibutestile" extends="baseLayout" >
+		   	<put-attribute name="body" value="/AddAttribute.jsp" />
+	</definition>
+	<!-- Admin tiles  END-->
+		<definition name="reporttile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Generatereport.jsp" />
+	</definition>
+	<!-- Added by Kirti -->
+	<definition name="sellitemtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/SellItem.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	 <definition name="additemtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/additem.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="additemsuccesstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Success_updation.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="itemupdatetile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updateitem1.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updateitemtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updateitem.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updateitemerrortile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updateitem1.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updateitemsuccesstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Success_updation.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updateitemfailtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updateitem.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<!--  end kirti-->
+	<!-- Tiles for deals -->
+	
+	<definition name="dealstilenew" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Deals.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="discountstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Discounts.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	 
+	 <definition name="viewofferstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/Viewoffers.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	 
+	 <!--  addesd by sudha -->
+	<definition name="addDealsTile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/addDeal.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	
+	<definition name="deleteDealsTile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/deleteDeals.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<!-- kriti -->
+	<definition name="changeemailtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/emailchange.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="changepasswordtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/passwordchange.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+ 	<definition name="changeaddresstile1" extends="baseLayout" >
+	   	<put-attribute name="body" value="/ChangeAddress1.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition> 
+	<definition name="changenametile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/namechange.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="changedobtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/dobchange.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updatetile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updateuser.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+
+	<definition name="passwordtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/redirecttologin.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="updatesuccesstile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/updatesuccess.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<definition name="viewtile" extends="baseLayout" >
+	   	<put-attribute name="body" value="/viewdetails.jsp" />
+	   	<put-attribute name="footer" value="/footer.jsp" />
+	</definition>
+	<!--  -->
+	<!-- done -->
+</tiles-definitions>

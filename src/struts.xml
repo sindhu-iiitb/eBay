@@ -1,0 +1,486 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+		
+   <package name="default" extends="struts-default,json-default">
+   
+   <!-- edited by sindhu and sudha  -->
+      <result-types>
+         <result-type name="tiles" 
+         class="org.apache.struts2.views.tiles.TilesResult" />
+      </result-types>
+	<!-- Interceptor Configuration Added by Sirisha & Sowmya -->
+   <interceptors>
+   		<interceptor name="authenticationInterceptor" 
+   		class="ebay.iiitb.interceptor.AuthenticationInterceptor"></interceptor>
+   		<interceptor-stack name="secureStack">
+   		<interceptor-ref name="authenticationInterceptor"></interceptor-ref>
+   		<interceptor-ref name="defaultStack"></interceptor-ref>
+   		</interceptor-stack>
+   </interceptors>
+   <!-- Done -->
+      <action name="*Menu" class="ebay.Actiontest">
+         <result name="tiger" type="tiles">home</result>
+        
+      </action>
+     
+      <action name="start" class="ebay.iiitb.home.EntryAction">
+    	  <result name="success" type="tiles">starttile</result>
+      </action>
+      
+       <action name="registeraction" class="ebay.iiitb.registration.RegistrationAction">
+    	  <result name="success" >/Registersuccess.jsp</result>
+    	  <result name="error"  >/Registerfailure.jsp</result>
+      </action>
+    
+      <action name="headerr" class="ebay.iiitb.home.HeaderAction">
+    	  <result name="success" >/header.jsp</result>
+      </action>
+      
+       <action name="get1" class="ebay.iiitb.dealsandcategories.PopulateTopCategoriesAction">
+    	  <result name="success" type="tiles">dealstile</result>
+      </action>
+    
+     <action name="get" class="ebay.iiitb.PopulateItems.PopulateSubCategoriesAction">
+    	  <result name="success" type="tiles">itemstile</result>
+    	  <result name="error" type="tiles">noitemtiles</result>
+      </action>
+     
+     	<action name="ajaxSortAction" class="ebay.iiitb.PopulateItems.AjaxSortAction">
+   				<result type="json">
+        			<param name="excludeNullProperties">true</param>
+        			<param name="noCache">true</param>
+   				</result>
+   			</action>
+   			
+   		<action name="ajaxSortAction1" class="ebay.iiitb.PopulateItems.AjaxSortAction">
+   				<result type="json">
+        			<param name="excludeNullProperties">true</param>
+        			<param name="noCache">true</param>
+   				</result>
+   			</action>
+   		<action name="ajaxSortAction2" class="ebay.iiitb.PopulateItems.AjaxSortAction">
+   				<result type="json">
+        			<param name="excludeNullProperties">true</param>
+        			<param name="noCache">true</param>
+   				</result>
+   			</action>
+   			
+       <action name="emailcheckAction" class="ebay.iiitb.registration.emailCheckAction">
+    	 <result type="json">
+        <param name="excludeNullProperties">true</param>
+        <param name="noCache">true</param>
+	   </result>
+	   </action>
+
+		<action name="login" class="ebay.iiitb.login.LoginAction">
+    	  <result name="success" type="chain">start</result>
+    	  <result name="error">/Registration_login.jsp</result>
+    	</action>
+      
+       <action name="loginafterregister" class="ebay.iiitb.login.LoginAfterRegisterAction">
+    	  <result name="success" type="chain">start</result>
+       </action>
+      
+        <action name="logout" class="ebay.iiitb.logout.Logout">
+    	  <result name="success" type="tiles">logouttile</result>
+       </action>
+       
+        <action name="getitem" class="ebay.iiitb.itemdetails.ItemDisplayAction">
+    	  <result name="success" type="tiles">itemdetailsstile</result>
+       </action>
+		<action name="buynow" class="ebay.iiitb.buynow.BuyNow">
+    	  <result name="success" type="chain">start</result>
+       </action>
+       
+      
+		
+<!-- Done  -->
+  
+	   
+		
+		<!-- added by sudha -->
+		<action name = "addDeal" class="ebay.iiitb.deals.DealsFirstAction">
+		<result name="success" type="tiles">addDealsTile</result>
+      	</action>
+      	<action name = "deleteDeal" class="ebay.iiitb.deals.RedirectDeleteDealsAction">
+		<result name="success" type="tiles">deleteDealsTile</result>
+      	</action>
+      
+      	<action name="ajaxDealsAction" class="ebay.iiitb.deals.AjaxDealsAction">
+   				<result type="json">
+        			<param name="excludeNullProperties">true</param>
+        			<param name="noCache">true</param>
+   				</result>
+   		</action>
+   		
+   		<action name="ajaxDealsSecondAction" class="ebay.iiitb.deals.AjaxDealsSecondAction">
+   				<result type="json">
+        			<param name="excludeNullProperties">true</param>
+        			<param name="noCache">true</param>
+   				</result>
+   		</action>
+   		
+   		<action name = "insertDeal" class="ebay.iiitb.deals.InsertDealAction">
+			<result name="success" type="tiles">successtile</result>
+			<result name="error" type="tiles">Errortile</result>
+      	</action>
+      	
+      	<action name = "deleteDeals" class="ebay.iiitb.deals.DeleteDealAction">
+			<result name="success" type="tiles">successtile</result>
+			<result name="error" type="tiles">Errortile</result>
+      	</action>
+      	<!--  changes by kamini -->
+		<action name = "deleteaction" class="ebay.iiitb.itemmanage.Deleteaction">
+		<result name="success" type="tiles">deletetile</result>
+		<result name="failure" type="tiles">errordeletetile</result>
+      	</action>
+      
+	   
+	   <action name = "selectaction" class="ebay.iiitb.itemmanage.Selectaction" >
+		<result name ="sellitem" type="chain">sell</result>
+		<result name ="deleteitem" type="chain">deleteaction</result>
+		<!-- added bu sudha -->
+		<result name="addDeal" type="chain">addDeal</result>
+		<result name="deleteDeal" type="chain">deleteDeal</result>
+		<!--  -->
+		<!-- added by kirti(12-04-16) -->
+		<result name="updateitem" type="chain">updateItemRedirect</result>
+		<!--  -->
+		</action>
+		
+		<!-- added by sudha -->
+			<action name = "updateItemRedirect" class="ebay.iiitb.Sell.UpdateItemRedirect">
+			<result name="success" type="tiles">itemupdatetile</result>
+			<result name="failure" type="tiles">errordeletetile</result>
+      		</action>
+		<!--  -->
+		
+		<action name="deleteitemaction" class="ebay.iiitb.itemmanage.DeleteItemnameAction">
+		<result name="success" type="chain">start</result>
+		</action>
+		<action name = "sessioncheck" class="ebay.iiitb.itemmanage.Sessioncheck" >
+		<result name="success">/success.jsp</result>
+		</action>
+		
+		<action name = "selling" class="ebay.iiitb.itemmanage.Sessionaction">
+		<result name = "notset" type="chain">login</result>
+		<result name = "set" type="chain">startselling</result>
+		</action>
+		 <action name="startselling" class="ebay.iiitb.itemmanage.StartSellingAction">
+		    <result name="failure" type="tiles">sellerdetailstile</result>
+		   <result name="success" type="tiles">itemmanagementtile</result>
+		   </action>
+   		<action name="sellerdetails" class="ebay.iiitb.itemmanage.SellerDetailsAction">
+   		<result name="success" type="tiles">itemmanagementtile</result>
+   		<result name="error" type="tiles">errortile</result>
+   		
+   		</action>
+	   <action name="generatereport" class="ebay.iiitb.report.GenerateReportAction">
+		<result name="success" type="tiles">reporttile</result>
+		</action>
+		<action name="validatename" class="ebay.iiitb.Sell.ValidateNameAction" method="validatename">
+   <result type="json">
+        <param name="excludeNullProperties">true</param>
+        <param name="noCache">true</param>
+   </result>
+   </action>
+	   
+	   <!-- changes made by kamini ends -->
+<!-- Added by Sirisha & Sowmya -->
+	      <action name="trackorders" class="ebay.iiitb.trackOrder.InitialTrackOrderAction" method ="execute">
+     	<interceptor-ref name="secureStack"></interceptor-ref>
+    	  <result name="success" type="tiles">trackordertile</result>
+    	  <result name="login">/Registration_login.jsp</result>
+      </action>
+      <action name="In_transaction_orders" class="ebay.iiitb.trackOrder.TrackOrderAction" method ="execute">
+     	<result name="success" type="tiles">In_transaction_orderstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="shipped_orders" class="ebay.iiitb.trackOrder.ShippedItemsAction" method ="execute">
+     	<result name="success" type="tiles">shipped_orderstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="received_orders" class="ebay.iiitb.trackOrder.ReceivedOrdersAction" method ="execute">
+     	<result name="success" type="tiles">received_orderstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="itemdetails" class="ebay.iiitb.trackOrder.OrderItemsAction" method ="execute">
+     	<result name="success" type="tiles">shippedorderitemstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      <action name="itemdetails_with_rating" class="ebay.iiitb.trackOrder.OrderItemsAction" method ="getReceivedOrderItems">
+     	<result name="success" type="tiles">received_orderitemstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      <action name="shipped_itemdetails" class="ebay.iiitb.trackOrder.OrderItemsAction" method ="getShippedOrderItems">
+     	<result name="success" type="tiles">shippedorderitemstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="seller_or_user" class="ebay.iiitb.trackOrder.ChangeStatusAction" method ="isSeller">
+     	<result name="success" type="tiles">sellerstatustile</result>
+    	  <result name="error" type="tiles">userstatustile</result>
+      </action>
+     
+     <action name="getpaid" class="ebay.iiitb.trackOrder.ChangeStatusAction" method ="getPaidItems">
+     	<result name="success" type="tiles">getpaidorderstile</result>
+    	  <result name="error" type="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="update_ToShipped" class="ebay.iiitb.trackOrder.ChangeStatusAction" method ="Change_As_Shipped">
+     	<result name="success">/Success_updation.jsp</result>
+    	  <result name="error">/Error.jsp</result>
+      </action>
+      
+      <action name="getshipped" class="ebay.iiitb.trackOrder.ChangeStatusAction" method ="getShippedItems">
+     	<result name="success" type="tiles">getshippedorderstile</result>
+    	  <result name="error" type ="tiles">noitems_tiles</result>
+      </action>
+      
+      <action name="update_ToReceived" class="ebay.iiitb.trackOrder.ChangeStatusAction" method ="Change_As_Received">
+     	<result name="success">/Success_updation.jsp</result>
+    	  <result name="error">/Error.jsp</result>
+      </action>
+      <action name="rateseller" class="ebay.iiitb.trackOrder.OrderItemsAction" method ="rateSeller">
+		   	<result type="json">
+		        <param name="excludeNullProperties">true</param>
+		        <param name="noCache">true</param>
+		   	</result>
+   	  </action>
+ 	  <action name="displayCart" class="ebay.iiitb.cart.CartAction" method ="execute">
+ 	    <interceptor-ref name="secureStack"></interceptor-ref>
+    	  <result name="login">/Registration_login.jsp</result>
+     	<result name="success" type ="tiles">carttile</result>
+     	<result name="error" type ="tiles">updateqtyerrortile</result>
+      </action>
+       <action name="remove" class="ebay.iiitb.cart.CartAction" method ="removeCartItem">
+     	<result name="success" type ="tiles">carttile</result>
+      </action>
+      
+        <action name="updatequantity" class="ebay.iiitb.cart.CartAction" method ="updateQuantity_in_cart">
+     		<result type="json">
+		        <param name="excludeNullProperties">true</param>
+		        <param name="noCache">true</param>
+		   	</result>
+      </action>
+<!-- Done -->
+<!-- by kriti & kp -->
+<action name = "revieworder" class="ebay.iiitb.revieworder.ReviewOrderAction" >
+<result name="success" type="tiles">reviewordertile</result>
+<result name="error" type="tiles">changeaddresstile</result>
+</action>
+<action name = "changeAddress" class="ebay.iiitb.ChangeAddress.ChangeAddressAction" >
+<result name = "success" type ="chain">revieworder</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+<action name = "Payment" class="ebay.iiitb.Payment.PaymentAction" >
+<result name="success" type="tiles">Paymenttile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+<action name = "PaymentPage" class="ebay.iiitb.Payment.PaymentPageAction" >
+<result name="success" type="tiles">PaymentDone2tile</result>
+<result name="error" type="tiles">Errortile</result>
+<result name="NoBal" type="tiles">Nobaltile</result>
+</action>
+
+<action name = "makepayment" class="ebay.iiitb.Payment.PaymentCancelAction" >
+<result name="success" type="tiles">PaymentDonetile</result>
+</action>
+<action name = "loadchangeaddress" class="ebay.iiitb.Payment.PaymentCancel1Action" >
+<result name="success" type="tiles">changeaddresstile</result>
+</action>
+<!-- done -->
+
+
+<!-- Admin part -->
+
+<action name="updatevat" class="ebay.iiitb.admin.AdminHome">
+     	<result name="success" type ="tiles">vattile</result>
+</action>
+<action name="updatevatdetails" class="ebay.iiitb.admin.ChangeVatPercentageAction">
+     	<result name="success" type ="tiles">updatevatsuccesstile</result>
+     	<result name="error" type ="tiles">updatevaterrortile</result>
+</action>
+
+<action name = "adminhome" class="ebay.iiitb.admin.AdminHome" >
+<result name="success" type="tiles">AdminHometile</result>
+
+</action>
+
+<action name = "Itemstatusupdate" class="ebay.iiitb.admin.AdminHome" >
+<result name="success" type="tiles">Itemstatusupdatetile</result>
+
+</action>
+
+<action name = "Addcategory" class="ebay.iiitb.admin.AdminHome" >
+<result name="success" type="tiles">Addcategorytile</result>
+</action>
+
+<action name = "Addnewcategory" class="ebay.iiitb.admin.AdminHome" >
+<result name="success" type="tiles">Addnewcategorytile</result>
+</action>
+
+<action name = "Advtcost" class="ebay.iiitb.admin.AdminHome" >
+<result name="success" type="tiles">advtcosttile</result>
+</action>
+
+<action name = "Addnewsubcategory" class="ebay.iiitb.home.HeaderAction" >
+<result name="success" type="tiles">Addnewsubcategorytile</result>
+</action>
+
+
+
+<action name = "AddNewCategory" class="ebay.iiitb.admin.AddNewCategoryAction" >
+<result name="success" type="tiles">successtile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+
+<action name = "AddNewSubcategory" class="ebay.iiitb.admin.AddNewSubcategoryAction" >
+<result name="success" type="tiles">successtile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+
+
+<action name = "ChangeAdvtCost" class="ebay.iiitb.admin.ChangeAdvtCostAction" >
+<result name="success" type="tiles">successtile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+
+<action name = "updateadvt" class="ebay.iiitb.admin.UpdateAdvtAction" >
+<result name="success" type="tiles">successtile</result>
+<result name="error" type="tiles">UpdateErrortile</result>
+</action>
+
+<action name = "AddAttributes" class="ebay.iiitb.Sell.ItemManagementAction" >
+<result name="success" type="tiles">addattibutestile</result>
+</action>
+<action name = "AddItemSpecificAttributes" class="ebay.iiitb.admin.AddItemSpecificsAction" >
+<result name="success" type="tiles">successtile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+
+<!-- done -->
+<!-- Begin changes by Kirti-->
+        <action name="SellItem" class="ebay.iiitb.Sell.SellItemAction">
+     		<result name="success" type="tiles">additemtile</result>
+      	</action>
+      	
+      	<action name="ajaxAction" class="ebay.iiitb.Sell.AjaxJsonAction">
+		   	<result type="json">
+		        <param name="excludeNullProperties">true</param>
+		        <param name="noCache">true</param>
+		   	</result>
+   		</action> 
+
+		<action name="sell" class="ebay.iiitb.Sell.ItemManagementAction">
+	     	<result name="success" type="tiles">sellitemtile</result>
+	     	<result name="error" type="chain">login</result>
+	     </action>
+	     
+	      <action name="AddItem" class="ebay.iiitb.Sell.AddItemAction">
+     		<result name="success" type="tiles">additemsuccesstile</result>
+     		<result name="error" type="tiles">additemfailtile</result>
+      	</action>
+      	<!-- added by kirti(12-04-16) --> 
+      	<action name="UpdateItem" class="ebay.iiitb.Sell.UpdateItemAction">
+     		<result name="success" type="tiles">updateitemtile</result>
+     		<result name="error" type="tiles">updateitemerrortile</result>
+      	</action>
+      	<action name="UpdateItemDetails" class="ebay.iiitb.Sell.UpdateItemDetailsAction">
+     		<result name="success" type="tiles">updateitemsuccesstile</result>
+     		<result name="error" type="tiles">updateitemfailtile</result>
+      	</action> 
+      	<action name="getCost" class="ebay.iiitb.Sell.AjaxJsonAction" method="calcost">
+		   	<result type="json">
+		        <param name="excludeNullProperties">true</param>
+		        <param name="noCache">true</param>
+		   	</result>
+   		</action>  
+      	<!-- kirti(12-04-16) -->
+  
+  <!-- Done -->
+  
+  <!--Deals part  -->
+    <action name="deals" class="ebay.iiitb.deals.DealsAction">
+     		<result name="success" type="tiles">dealstilenew</result>
+     		<result name="error" type="tiles">dealerrortile</result>
+     </action>
+   
+    <action name="discount" class="ebay.iiitb.discounts.DiscountsAction">
+     		<result name="success" type="tiles">discountstile</result>
+     		<result name="error" type="tiles">errortile</result>
+    </action>
+     <action name="discount" class="ebay.iiitb.discounts.DiscountsAction">
+     		<result name="success" type="tiles">discountstile</result>
+     		<result name="error" type="tiles">errortile</result>
+    </action>
+     <action name="viewoffers" class="ebay.iiitb.viewoffers.ViewOffersAction">
+     		<result name="success" type="tiles">viewofferstile</result>
+     		<result name="error" type="tiles">errortile</result>
+    </action>
+<!-- kriti -->
+    <!--  <action name = "emailchange1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">changeemailtile</result>
+</action>
+ 
+    
+ <action name = "emailchange" class="ebay.iiitb.infoupdate.changeemailAction" >
+<result name="success" type="tiles">Errortile</result>
+<result name="failure" type="tiles">Nobaltile</result>
+</action> --> 
+
+<action name = "passwordchange1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">changepasswordtile</result>
+</action>
+
+ <action name = "passwordchange" class="ebay.iiitb.infoupdate.changepasswordAction" >
+<result name="success" type="tiles">passwordtile</result>
+<result name="failure" type="tiles">Nobaltile</result>
+</action>
+<action name = "passwordloginchange" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success">/Registration_login.jsp</result>
+</action>
+
+<action name = "addresschange1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">changeaddresstile1</result>
+</action>
+
+<action name = "changeAddress1" class="ebay.iiitb.ChangeAddress.ChangeAddressAction" >
+<result name="success" type="tiles">updatesuccesstile</result>
+<result name="error" type="tiles">Errortile</result>
+</action>
+
+<action name = "namechange1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">changenametile</result>
+</action>
+<action name = "namechange" class="ebay.iiitb.infoupdate.changenameAction" >
+<result name="success" type="tiles">updatesuccesstile</result>
+<result name="failure" type="tiles">Errortile</result>
+</action>
+<action name = "dobchange1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">changedobtile</result>
+</action>
+<action name = "dobchange" class="ebay.iiitb.infoupdate.changedobAction" >
+<result name="success" type="tiles">updatesuccesstile</result>
+<result name="failure" type="tiles">Errortile</result>
+</action>
+<action name = "updateuser1" class="ebay.iiitb.infoupdate.changeAction" >
+<result name="success" type="tiles">updatetile</result>
+</action>
+<action name = "viewuser1" class="ebay.iiitb.infoupdate.viewAction" >
+<result name="success" type="tiles">viewtile</result>
+</action>
+<action name = "deleteuser1" class="ebay.iiitb.infoupdate.deleteAction" >
+<result name="success" type="chain">logout</result>
+</action>
+
+  <!-- Done -->
+   </package>
+   
+</struts>
